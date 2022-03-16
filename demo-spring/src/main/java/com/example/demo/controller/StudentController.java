@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Student;
 import com.example.demo.service.StudentService;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators.IntSequenceGenerator;
 
 @RestController
 public class StudentController {

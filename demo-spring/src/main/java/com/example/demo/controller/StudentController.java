@@ -58,7 +58,6 @@ public class StudentController {
 			System.out.println(id);
 			service.deleteStudent(id);
 		} catch (Exception e) {
-			
 			e.printStackTrace();
 			responseEntity = new ResponseEntity<Student>(HttpStatus.NOT_FOUND);
 		}

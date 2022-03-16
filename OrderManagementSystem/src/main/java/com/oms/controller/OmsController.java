@@ -49,5 +49,10 @@ public class OmsController {
 	}
 	
 	
-
+	@DeleteMapping("deleteOrder/{id}")
+	public String deleteByid(@PathVariable Integer id) {
+		
+		service.deleteByid(id);
+		return "Deleted  id : "+id;
+	}
 }

@@ -1,3 +1,3 @@
 # HT
 
-# demo-spring = Student_Management_System
+demo-spring = Student_Management_System

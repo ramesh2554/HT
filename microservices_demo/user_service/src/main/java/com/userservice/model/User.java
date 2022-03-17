@@ -5,17 +5,19 @@ import java.util.List;
 
 public class User {
 
-	private long userId;
+	private Long userId;
 	private String name;
 	private String phone;
 	
 	List<Contact> contacts = new ArrayList<>();
 
-	public long getUserId() {
+	
+
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -45,7 +47,11 @@ public class User {
 
 	
 
-	public User(long userId, String name, String phone, List<Contact> contacts) {
+	
+
+	
+
+	public User(Long userId, String name, String phone, List<Contact> contacts) {
 		super();
 		this.userId = userId;
 		this.name = name;
@@ -53,7 +59,7 @@ public class User {
 		this.contacts = contacts;
 	}
 
-	public User(long userId, String name, String phone) {
+	public User(Long userId, String name, String phone) {
 		super();
 		this.userId = userId;
 		this.name = name;

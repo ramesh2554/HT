@@ -1,0 +1,11 @@
+package com.userservice.model;
+
+public class Contact {
+	
+	private Long cID;
+	private String email;
+	private String contactName;
+	
+	private Long userId;
+
+}

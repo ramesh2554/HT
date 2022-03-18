@@ -1,10 +1,13 @@
 package com.flightapp.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.flightapp.service.FlightappService;
+import com.flightapp.model.UserRegister;
+import com.flightapp.service.UserRegisterService;
 
 @RestController
 @RequestMapping("api/v1.0/flight")
@@ -12,6 +15,13 @@ import com.flightapp.service.FlightappService;
 public class FlightappBookingController {
 
 	@Autowired
-	FlightappService service;
+	UserRegisterService service;
+	
+	@PostMapping("/booking")
+	public String bookFlightTicket(@RequestBody UserRegister register) {
+		
+		return service.bookFlightTicket(register);
+		 
+	}
 	
 }

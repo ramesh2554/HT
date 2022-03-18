@@ -15,7 +15,6 @@ import com.flightapp.exception.AdminLoginFailedException;
 import com.flightapp.model.AdminLoginDetails;
 import com.flightapp.model.Flightapp;
 import com.flightapp.service.FlightappService;
-import com.flightapp.utility.Utility;
 
 @RestController
 @RequestMapping("api/v1.0/flight")
@@ -23,35 +22,33 @@ public class FlightappController {
 
 	@Autowired
 	FlightappService service;
-	
-	@PostMapping("/airline/inventory/add")
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public Integer saveFlightInfo(@RequestBody Flightapp flightapp) {
-		
-		return service.saveFlightInfo(flightapp) ;
-		
-		
-	}
+
 	@GetMapping("/test")
 	public String testApplication() {
 		return "test";
 	}
-	
+
 	@PostMapping("/admin/login")
 	public String adminLogin(@RequestBody AdminLoginDetails details) {
 		Boolean adminLogin = service.adminLogin(details);
-		if(adminLogin) {
+		if (adminLogin) {
 			return "LoginSucess";
-		}
-		else {
+		} else {
 			throw new AdminLoginFailedException("Admin Access Denied ..!! ,, Try Again ...!!!");
-			
+
 		}
 	}
-	
+
+	@PostMapping("/airline/inventory/add")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public Integer saveFlightInfo(@RequestBody Flightapp flightapp) {
+		return service.saveFlightInfo(flightapp);
+
+	}
+
 	@PostMapping("/search")
-	public List<Flightapp> searchFlight(@RequestBody Flightapp flightapp){
+	public List<Flightapp> searchFlight(@RequestBody Flightapp flightapp) {
 		List<Flightapp> searchFlight = service.searchFlight(flightapp);
 		return searchFlight;
 	}
-} 
+}

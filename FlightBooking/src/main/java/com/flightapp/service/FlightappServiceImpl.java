@@ -1,18 +1,17 @@
 package com.flightapp.service;
 
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.flightapp.exception.AdminLoginFailedException;
+import com.flightapp.exception.FlightInfoMissedException;
 import com.flightapp.model.AdminLoginDetails;
 import com.flightapp.model.Flightapp;
 import com.flightapp.repo.AdminLoginDetailsRepo;
 import com.flightapp.repo.FlightappRepo;
-import com.flightapp.utility.Utility;
 
 @Service
 public class FlightappServiceImpl implements FlightappService {
@@ -27,9 +26,19 @@ public class FlightappServiceImpl implements FlightappService {
 	@Override
 	public Integer saveFlightInfo(Flightapp flightapp) {
 		
-		Flightapp save = repo.save(flightapp);
-			int flightNumber = save.getFlightNumber();
-			return flightNumber;
+		
+		if(flightapp.getScheduledDays().equalsIgnoreCase("Daily") || 
+				flightapp.getScheduledDays().equalsIgnoreCase("WeekDays") || 
+				flightapp.getScheduledDays().equalsIgnoreCase("Weekends") ) {
+			
+			flightapp.setRoundTripCost(flightapp.getTicketCost()*2);
+			Flightapp save = repo.save(flightapp);
+			Integer FlightNumber = save.getFlightNumber();
+			return FlightNumber;
+		}else {
+			throw new FlightInfoMissedException("Please enter correct details .. !!");
+		}
+		
 		}
 		
 
@@ -38,7 +47,8 @@ public class FlightappServiceImpl implements FlightappService {
 	@Override
 	public Boolean adminLogin(AdminLoginDetails adminlogin) {
 		
-		AdminLoginDetails save = adminRepo.save(adminlogin);
+//		AdminLoginDetails save = adminRepo.save(adminlogin);
+//		System.out.println(save);
 		if(adminlogin.getUsername().equalsIgnoreCase("admin")==adminlogin.getPassword().equalsIgnoreCase("admin")) {
 			return true;
 		}
@@ -56,6 +66,8 @@ public class FlightappServiceImpl implements FlightappService {
 	public List<Flightapp> searchFlight(Flightapp flightapp) {
 		
 		List<Flightapp> findByFromplaceAndToplace = repo.findByFromplaceAndToplace(flightapp.getFromplace(), flightapp.getToplace());
+		
+	
 		return findByFromplaceAndToplace;
 	}
 

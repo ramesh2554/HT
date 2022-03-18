@@ -10,5 +10,6 @@ import com.flightapp.model.Flightapp;
 @Repository
 public interface FlightappRepo extends JpaRepository<Flightapp,Integer> {
 
+	
 	List<Flightapp> findByFromplaceAndToplace(String from , String to);
 }

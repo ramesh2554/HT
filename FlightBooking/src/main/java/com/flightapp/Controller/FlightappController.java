@@ -39,7 +39,9 @@ public class FlightappController {
 		}
 	}
 
-	@PostMapping("/airline/inventory/add")
+//	@PostMapping("/airline/inventory/add")
+	
+	@PostMapping("/airline/register")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Integer saveFlightInfo(@RequestBody Flightapp flightapp) {
 		return service.saveFlightInfo(flightapp);
@@ -51,4 +53,6 @@ public class FlightappController {
 		List<Flightapp> searchFlight = service.searchFlight(flightapp);
 		return searchFlight;
 	}
+	
+	
 }

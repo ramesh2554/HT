@@ -12,7 +12,7 @@ import lombok.Data;
 public class UserRegister {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id ;
 	
 	
@@ -28,5 +28,6 @@ public class UserRegister {
 	
 	private String pnr;
 	
+	private int FlightNumber;
 	
 }

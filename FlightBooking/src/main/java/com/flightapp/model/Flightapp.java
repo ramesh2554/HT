@@ -14,7 +14,7 @@ import lombok.Data;
 public class Flightapp {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int flightNumber;
 	
 	private String airline;

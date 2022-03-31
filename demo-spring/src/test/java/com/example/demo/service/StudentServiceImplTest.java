@@ -1,9 +1,8 @@
 package com.example.demo.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-import org.hibernate.service.spi.InjectService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.example.demo.model.Student;
+import com.example.demo.repo.StudentRepo;
 
 @ExtendWith(MockitoExtension.class)
 class StudentServiceImplTest {
